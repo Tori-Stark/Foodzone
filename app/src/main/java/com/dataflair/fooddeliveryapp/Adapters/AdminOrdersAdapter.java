@@ -47,11 +47,11 @@ public class AdminOrdersAdapter extends FirebaseRecyclerAdapter<Model, AdminOrde
         holder.hostelLocation.setText(model.getHotelLocation());
         Picasso.get().load(model.getImageUrl()).into(holder.imageView);
 
-        holder.userName.setText(model.getName());
+        holder.fname.setText(model.getFirstName());
+        holder.lname.setText(model.getLastName());
         holder.userPhoneNumber.setText(model.getPhoneNumber());
-        holder.userCity.setText(model.getCityName());
-        holder.userAddress.setText(model.getAddress());
-        holder.userPinCode.setText(model.getPinCode());
+        holder.email.setText(model.getEmailAddress());
+        holder.password.setText(model.getPassword());
 
         String userId = model.getUserId();
 
@@ -67,7 +67,7 @@ public class AdminOrdersAdapter extends FirebaseRecyclerAdapter<Model, AdminOrde
                 //Setting the path of the database
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("totalOrders");
                 //Getting the parent node of the values
-                reference.orderByChild("name").equalTo(model.getName()).addListenerForSingleValueEvent(new ValueEventListener() {
+                reference.orderByChild("fname").equalTo(model.getFirstName()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
                         for (DataSnapshot ds : snapshot.getChildren()) {
@@ -111,7 +111,7 @@ public class AdminOrdersAdapter extends FirebaseRecyclerAdapter<Model, AdminOrde
     class Viewholder extends RecyclerView.ViewHolder {
 
 
-        TextView foodTitle, foodPrice, hostelLocation, userName, userPhoneNumber, userCity, userAddress, userPinCode;
+        TextView foodTitle, foodPrice, hostelLocation, fname, lname, userPhoneNumber, email, password;
         Button completeOrderButton;
         ImageView imageView;
 
@@ -127,12 +127,11 @@ public class AdminOrdersAdapter extends FirebaseRecyclerAdapter<Model, AdminOrde
             imageView = (ImageView) itemView.findViewById(R.id.FoodImage);
             completeOrderButton = (Button) itemView.findViewById(R.id.CompleteOrderBtn);
 
-            userName = (TextView) itemView.findViewById(R.id.UserName);
-            userPhoneNumber = (TextView) itemView.findViewById(R.id.UserPhoneNumber);
-            userCity = (TextView) itemView.findViewById(R.id.UserCity);
-            userAddress = (TextView) itemView.findViewById(R.id.UserAddress);
-            userPinCode = (TextView) itemView.findViewById(R.id.UserPinCode);
-
+            fname = (TextView) itemView.findViewById(R.id.FirstNameOrder);
+            lname = (TextView) itemView.findViewById(R.id.LastNameOrder);
+            userPhoneNumber = (TextView) itemView.findViewById(R.id.UserPhoneNumberOrder);
+            email = (TextView) itemView.findViewById(R.id.UserEmailOrder);
+            //password = (TextView) itemView.findViewById(R.id.UserAddress);
 
         }
     }

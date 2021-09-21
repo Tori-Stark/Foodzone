@@ -97,16 +97,25 @@
 
 
         <TextView
-            android:id="@+id/UserName"
+            android:id="@+id/FirstNameOrder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="User Name"
+            android:text="First Name"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_margin="10dp"/>
 
         <TextView
-            android:id="@+id/UserPhoneNumber"
+            android:id="@+id/LastNameOrder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Last Name"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_margin="10dp"/>
+
+        <TextView
+            android:id="@+id/UserPhoneNumberOrder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Phone Number"
@@ -115,31 +124,23 @@
             android:layout_margin="10dp"/>
 
         <TextView
-            android:id="@+id/UserCity"
+            android:id="@+id/UserEmailOrder"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="City"
+            android:text="Email Address"
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_margin="10dp"/>
 
-        <TextView
-            android:id="@+id/UserAddress"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="address"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="10dp"/>
 
-        <TextView
-            android:id="@+id/UserPinCode"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Pin"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:layout_margin="10dp"/>
+<!--        <TextView-->
+<!--            android:id="@+id/UserPasswordOrder"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="Password"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_margin="10dp"/>-->
 
 
         <Button

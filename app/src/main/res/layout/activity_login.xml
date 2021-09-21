@@ -10,53 +10,73 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please,Fill all the details and Continue"
+        android:text="Login to Continue"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:textStyle="bold"
         android:textSize="20dp" />
 
+<!--    <EditText-->
+<!--        android:id="@+id/FirstNameEditText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:hint="First Name"-->
+<!--        android:textStyle="bold"-->
+<!--        android:inputType="text"/>-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/LastNameEditText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:hint="Last Name"-->
+<!--        android:textStyle="bold"-->
+<!--        android:inputType="text"/>-->
 
     <EditText
-        android:id="@+id/PhoneNumberEditText"
+        android:id="@+id/EmailEditTextLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="Phone Number"
-        android:textStyle="bold" />
+        android:hint="Email Address"
+        android:textStyle="bold"
+        android:inputType="textEmailAddress"/>
+
+<!--    <EditText-->
+<!--        android:id="@+id/PhoneNumberEditText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:hint="Phone Number"-->
+<!--        android:textStyle="bold"-->
+<!--        android:inputType="phone"/>-->
 
     <EditText
-        android:id="@+id/AddressEditText"
+        android:id="@+id/PasswordTextLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="Address"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/CityEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="City"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/PinCodeExitText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:hint="Pin Code"
-        android:textStyle="bold" />
-
-
+        android:hint="Password"
+        android:textStyle="bold"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/GoogleSignInBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In"
+        android:text="Login"
         android:layout_gravity="center"
-         />
+        android:onClick="loginClick"/>
+
+    <Button
+        android:id="@+id/Register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Don't have an account? Sign Up!"
+        android:textStyle="bold"
+        android:onClick="Register"
+        android:textAllCaps="false"/>
 
 </LinearLayout>

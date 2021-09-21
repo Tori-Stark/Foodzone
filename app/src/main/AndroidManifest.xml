@@ -13,9 +13,10 @@
         android:roundIcon="@drawable/dataflair"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodDeliveryApp">
-        <activity android:name=".Activities.AdminActivity"></activity>
+        <activity android:name=".Activities.AdminActivity"/>
         <activity android:name=".Activities.UserRoleActivity" />
         <activity android:name=".Activities.LoginActivity" />
+        <activity android:name=".Activities.RegisterActivity" />
         <activity android:name=".Activities.GetStartedActivity" />
         <activity android:name=".MainActivity" >
             <intent-filter>

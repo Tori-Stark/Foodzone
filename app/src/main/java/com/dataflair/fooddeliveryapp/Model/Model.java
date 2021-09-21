@@ -2,19 +2,19 @@ package com.dataflair.fooddeliveryapp.Model;
 
 public class Model {
 
-    String name, cityName, profilepic, pinCode, phoneNumber, address,userId;
+    String fname, lname, emailaddress, phoneno, userpassword, profilepic, userId;
     String hotelLocation, imageUrl, itemName, itemPrice;
 
     public Model() {
     }
 
-    public Model(String name, String cityName, String profilepic, String pinCode, String phoneNumber, String address, String userId, String hotelLocation, String imageUrl, String itemName, String itemPrice) {
-        this.name = name;
-        this.cityName = cityName;
+    public Model(String fname, String lname, String emailaddress, String phonenumber, String profilepic, String userpassword, String address, String userId, String hotelLocation, String imageUrl, String itemName, String itemPrice) {
+        this.fname = fname;
+        this.lname = lname;
+        this.emailaddress = emailaddress;
         this.profilepic = profilepic;
-        this.pinCode = pinCode;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
+        this.phoneno = phonenumber;
+        this.userpassword = userpassword;
         this.userId = userId;
         this.hotelLocation = hotelLocation;
         this.imageUrl = imageUrl;
@@ -22,20 +22,26 @@ public class Model {
         this.itemPrice = itemPrice;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String fname) {
+        this.fname = fname;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getLastName() {
+        return lname;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setLastName(String lname) {
+        this.lname = lname;
+    }
+
+    public String getEmailAddress() { return emailaddress; }
+
+    public void setEmailAddress(String emailaddress) {
+        this.emailaddress = emailaddress;
     }
 
     public String getProfilepic() {
@@ -46,28 +52,20 @@ public class Model {
         this.profilepic = profilepic;
     }
 
-    public String getPinCode() {
-        return pinCode;
-    }
-
-    public void setPinCode(String pinCode) {
-        this.pinCode = pinCode;
-    }
-
     public String getPhoneNumber() {
-        return phoneNumber;
+        return phoneno;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhoneNumber(String phonenumber) {
+        this.phoneno = phonenumber;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPassword() {
+        return userpassword;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setPassword(String userpassword) {
+        this.userpassword = userpassword;
     }
 
     public String getUserId() {

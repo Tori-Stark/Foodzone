@@ -73,11 +73,10 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<Model, HomeAdapter.View
                                 HashMap orderDetails = new HashMap();
 
                                 //Adding the details to hashmap
-                                orderDetails.put("name", model.getName());
+                                orderDetails.put("fname", model.getFirstName());
+                                orderDetails.put("lname", model.getLastName());
                                 orderDetails.put("phoneNumber", model.getPhoneNumber());
-                                orderDetails.put("address", model.getAddress());
-                                orderDetails.put("cityName", model.getCityName());
-                                orderDetails.put("pinCode", model.getPinCode());
+                                orderDetails.put("email", model.getEmailAddress());
 
                                 orderDetails.put("hotelLocation", hotelLocation);
                                 orderDetails.put("itemPrice", foodPrice);
