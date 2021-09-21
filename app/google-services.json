@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "256381728714",
+    "firebase_url": "https://foodiezone-eabcf-default-rtdb.firebaseio.com",
+    "project_id": "foodiezone-eabcf",
+    "storage_bucket": "foodiezone-eabcf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256381728714:android:83cdcf7dc2cf2eb9418133",
+        "android_client_info": {
+          "package_name": "com.dataflair.fooddeliveryapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256381728714-isqom4kqvn3864n13rqrf0832r8tg7u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoCjwUN_7Dpwt-CKTaAtS7EvgHhebkwPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256381728714-isqom4kqvn3864n13rqrf0832r8tg7u7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
