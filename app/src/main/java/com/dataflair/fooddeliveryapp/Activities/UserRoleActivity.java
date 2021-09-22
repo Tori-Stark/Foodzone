@@ -7,16 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.dataflair.fooddeliveryapp.Adapters.AdminOrdersAdapter;
 import com.dataflair.fooddeliveryapp.Fragments.AddItemFragment;
+
 import com.dataflair.fooddeliveryapp.MainActivity;
 import com.dataflair.fooddeliveryapp.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
 
@@ -31,7 +34,11 @@ public class UserRoleActivity extends AppCompatActivity {
 
 
         //Getting the userid of the user from gMail to store the user details under this id
+
         FirebaseUser userId = FirebaseAuth.getInstance().getCurrentUser();
+
+        //String userId = GoogleSignIn.getLastSignedInAccount(getApplicationContext()).getId();
+
 
         user = (Button) findViewById(R.id.UserBtn);
         adminBtn = (Button) findViewById(R.id.AdminBtn);
@@ -39,8 +46,13 @@ public class UserRoleActivity extends AppCompatActivity {
         //Implementing on clickListener to save the current users role
         user.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
 /*
+=======
+            public void onClick(View view) {
+
+>>>>>>> aa34d9db673580640cc67164eafdca364c9ad5e4
                 FirebaseDatabase.getInstance().getReference().child("users")
                         .child(userId)
                         .child("role")
@@ -54,6 +66,7 @@ public class UserRoleActivity extends AppCompatActivity {
                         }
                     }
                 });
+<<<<<<< HEAD
 */
                 switch (v.getId()){
                     case R.id.UserBtn:
@@ -64,6 +77,7 @@ public class UserRoleActivity extends AppCompatActivity {
                         break;
 
                 }
+
             }
         });
 
@@ -73,7 +87,11 @@ public class UserRoleActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 FirebaseDatabase.getInstance().getReference().child("users")
+
                         .child(String.valueOf(userId))
+
+                        //.child(userId)
+
                         .child("role")
                         .setValue("admin").addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

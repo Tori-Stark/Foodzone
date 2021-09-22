@@ -142,5 +142,3 @@ public class MyOrdersAdapter extends FirebaseRecyclerAdapter<Model, MyOrdersAdap
 
 
 }
-
-

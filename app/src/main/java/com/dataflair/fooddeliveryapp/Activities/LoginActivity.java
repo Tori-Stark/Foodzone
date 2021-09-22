@@ -102,7 +102,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         /*if(rememberMe.isChecked()){
-
         }*/
 
 
@@ -150,3 +149,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 }
+

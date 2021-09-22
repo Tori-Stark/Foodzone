@@ -94,11 +94,5 @@
             android:layout_height="wrap_content"
             android:text="Sign Out"
             android:layout_margin="10dp"/>
-
-
-
-
     </LinearLayout>
-
-
 </LinearLayout>

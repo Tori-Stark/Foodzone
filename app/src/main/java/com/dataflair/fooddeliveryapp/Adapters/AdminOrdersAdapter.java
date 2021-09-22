@@ -138,5 +138,3 @@ public class AdminOrdersAdapter extends FirebaseRecyclerAdapter<Model, AdminOrde
 
 
 }
-
-

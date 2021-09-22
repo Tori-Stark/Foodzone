@@ -160,4 +160,3 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<Model, HomeAdapter.View
 
 
 }
-
