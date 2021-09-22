@@ -60,9 +60,9 @@ public class MyOrdersAdapter extends FirebaseRecyclerAdapter<Model, MyOrdersAdap
             public void onClick(View view) {
 
                 //Getting user id from the gmail sing in
-                String userId = GoogleSignIn.getLastSignedInAccount(view.getContext()).getId();
+                //String userId = GoogleSignIn.getLastSignedInAccount(view.getContext()).getId();
                 //Path to the database
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("myOrders").child(userId);
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("myOrders");
                 reference.orderByChild("itemName").equalTo(model.getItemName()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
