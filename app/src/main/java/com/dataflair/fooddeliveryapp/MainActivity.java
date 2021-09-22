@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.dataflair.fooddeliveryapp.Activities.AdminActivity;
 import com.dataflair.fooddeliveryapp.Activities.GetStartedActivity;
@@ -25,11 +26,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.core.Constants;
+import com.google.firebase.database.core.UserWriteRecord;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     FrameLayout frameLayout;
     BottomNavigationView bottomNavigationView;
+    FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,39 +98,50 @@ public class MainActivity extends AppCompatActivity {
             finish();
         } else {
             //Checks for user Role and starts the appropriate activity
-            String id = GoogleSignIn.getLastSignedInAccount(getApplicationContext()).getId();
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(id).child("role");
-            reference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+            //String id = GoogleSignIn.getLastSignedInAccount(getApplicationContext()).getId();
+            //UserWriteRecord userRecord = FirebaseAuth.getInstance().getEmail();
+            //FirebaseUser currentUser = mAuth.getCurrentUser();
+//
+//            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child("role");
+//            reference.addValueEventListener(new ValueEventListener() {
+//
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                    if(!(Objects.requireNonNull(snapshot.getValue()).toString() == null)) {
+//                        String data = snapshot.getValue().toString();
+//                        if (data.equals("admin")) {
+//                            Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
+//                            startActivity(intent);
+//                            finish();
+//
+//                        } else if (data.equals("empty")) {
+//                            Intent intent = new Intent(getApplicationContext(), UserRoleActivity.class);
+//                            startActivity(intent);
+//                            finish();
+//
+//                        } else {
+//                            //do nothing
+//                        }
+//
+//                    }else{
+//                        //do nothing
+//                    }
+//
+//
+//                }
+//
+//
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    Toast.makeText(MainActivity.this,
+//                           "" + error.getMessage(),
+//                            Toast.LENGTH_SHORT).show();
+//                }
+//            });
 
-                    if (snapshot.getValue().toString() != null) {
-                        String data = snapshot.getValue().toString();
-
-                        if (data.equals("admin")) {
-                            Intent intent = new Intent(getApplicationContext(), AdminActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        } else if (data.equals("empty")) {
-                            Intent intent = new Intent(getApplicationContext(), UserRoleActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        } else {
-                            //do nothing
-                        }
-
-                    }
-
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
         }
     }
 }

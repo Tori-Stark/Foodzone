@@ -41,8 +41,8 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserProfileFragment extends Fragment {
 
     CircleImageView circleImageView;
-    TextView userNameTxt;
-    EditText phoneNumberEditTxt, addressEditTxt, cityNameEditTxt, pinCodeEdittxt;
+    TextView firstNameTxt, lastNameTxt;
+    EditText phoneNumberEditTxt, emailEditTxt, passwordEdittxt;
     Button signOutBtn, updateDetailsBtn;
     DatabaseReference databaseReference;
     String userId;
@@ -85,11 +85,11 @@ public class UserProfileFragment extends Fragment {
 
         //Assigning all the addresses of the android materials
         circleImageView = (CircleImageView) view.findViewById(R.id.ProfileImageView);
-        userNameTxt = (TextView) view.findViewById(R.id.UserNameTxt);
-        cityNameEditTxt = (EditText) view.findViewById(R.id.CityEditText);
-        phoneNumberEditTxt = (EditText) view.findViewById(R.id.PhoneNumberEditText);
-        pinCodeEdittxt = (EditText) view.findViewById(R.id.PinCodeExitText);
-        addressEditTxt = (EditText) view.findViewById(R.id.AddressEditText);
+        firstNameTxt = (TextView) view.findViewById(R.id.FirstNameTxtProfile);
+        lastNameTxt = (TextView) view.findViewById(R.id.LastNameTxtProfile);
+        emailEditTxt = (EditText) view.findViewById(R.id.EmailEditTextProfile);
+        phoneNumberEditTxt = (EditText) view.findViewById(R.id.PhoneNumberEditTextProfile);
+        passwordEdittxt = (EditText) view.findViewById(R.id.PasswordExitTextProfile);
 
         updateDetailsBtn = (Button) view.findViewById(R.id.UpdateProfileBtn);
         signOutBtn = (Button) view.findViewById(R.id.SignOutBtn);
@@ -109,11 +109,11 @@ public class UserProfileFragment extends Fragment {
                     Model model = snapshot.getValue(Model.class);
                     //setting the data to android materials
                     Picasso.get().load(model.getProfilepic()).into(circleImageView);
-                    userNameTxt.setText(model.getName());
-                    cityNameEditTxt.setText(model.getCityName());
+                    firstNameTxt.setText(model.getFirstName());
+                    lastNameTxt.setText(model.getLastName());
+                    emailEditTxt.setText(model.getEmailAddress());
                     phoneNumberEditTxt.setText(model.getPhoneNumber());
-                    addressEditTxt.setText(model.getAddress());
-                    pinCodeEdittxt.setText(model.getPinCode());
+                    passwordEdittxt.setText(model.getPassword());
 
                 }
 
@@ -132,16 +132,15 @@ public class UserProfileFragment extends Fragment {
 
                 //Getting the current data from the edit Text to update it to firebase
                 String phoneNumber = phoneNumberEditTxt.getText().toString();
-                String cityName = cityNameEditTxt.getText().toString();
-                String pinCode = pinCodeEdittxt.getText().toString();
-                String address = addressEditTxt.getText().toString();
+                String email = emailEditTxt.getText().toString();
+                String password = passwordEdittxt.getText().toString();
 
                 //Checking for empty fields
-                if (phoneNumber.isEmpty() || cityName.isEmpty() || pinCode.isEmpty() || address.isEmpty()) {
-                    Toast.makeText(getContext(), "Please,Fill Details", Toast.LENGTH_SHORT).show();
+                if (phoneNumber.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(getContext(), "Please, Fill Details", Toast.LENGTH_SHORT).show();
                 } else {
                     //calling method to update data to firebase
-                    updateDetails(phoneNumber, cityName, pinCode, address, userId);
+                    updateDetails(phoneNumber, email, password, userId);
                 }
             }
         });
@@ -178,7 +177,7 @@ public class UserProfileFragment extends Fragment {
         return view;
     }
 
-    private void updateDetails(String phoneNumber, String cityName, String pinCode, String address, String userId) {
+    private void updateDetails(String phoneNumber, String email, String password, String userId) {
 
 
         //Storing the user details in hashmap
@@ -186,9 +185,8 @@ public class UserProfileFragment extends Fragment {
 
         //adding the data to hashmap
         userDetails.put("phoneNumber", phoneNumber);
-        userDetails.put("cityName", cityName);
-        userDetails.put("pinCode", pinCode);
-        userDetails.put("address", address);
+        userDetails.put("email", email);
+        userDetails.put("password", password);
 
         //adding the data to firebase
         databaseReference.child(userId).updateChildren(userDetails).addOnCompleteListener(new OnCompleteListener() {

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "256381728714",
+    "firebase_url": "https://foodiezone-eabcf-default-rtdb.firebaseio.com",
     "project_id": "foodiezone-eabcf",
     "storage_bucket": "foodiezone-eabcf.appspot.com"
   },
