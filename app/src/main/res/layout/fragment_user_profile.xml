@@ -54,45 +54,30 @@
         <!--            android:hint="Last Name"-->
         <!--            android:textStyle="bold" />-->
 
-        <EditText
+        <TextView
             android:id="@+id/PhoneNumberEditTextProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:hint="Phone Number"
-            android:textStyle="bold" />
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"/>
 
-        <EditText
+        <TextView
             android:id="@+id/EmailEditTextProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:hint="Email"
+            android:text=""
+            android:textSize="20sp"
             android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/PasswordExitTextProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:hint="Password"
-            android:textStyle="bold" />
-
-
-
-        <Button
-            android:id="@+id/UpdateProfileBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Update Details"
-            android:layout_margin="10dp"/>
-
 
         <Button
             android:id="@+id/SignOutBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign Out"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:background="@color/purple_700"/>
     </LinearLayout>
 </LinearLayout>

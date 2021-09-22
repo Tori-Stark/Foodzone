@@ -25,6 +25,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,10 +43,10 @@ public class UserProfileFragment extends Fragment {
 
     CircleImageView circleImageView;
     TextView firstNameTxt, lastNameTxt;
-    EditText phoneNumberEditTxt, emailEditTxt, passwordEdittxt;
+    TextView phoneNumberEditTxt, emailEditTxt;
     Button signOutBtn, updateDetailsBtn;
     DatabaseReference databaseReference;
-    String userId;
+    private String userId;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -87,61 +88,41 @@ public class UserProfileFragment extends Fragment {
         circleImageView = (CircleImageView) view.findViewById(R.id.ProfileImageView);
         firstNameTxt = (TextView) view.findViewById(R.id.FirstNameTxtProfile);
         lastNameTxt = (TextView) view.findViewById(R.id.LastNameTxtProfile);
-        emailEditTxt = (EditText) view.findViewById(R.id.EmailEditTextProfile);
-        phoneNumberEditTxt = (EditText) view.findViewById(R.id.PhoneNumberEditTextProfile);
-        passwordEdittxt = (EditText) view.findViewById(R.id.PasswordExitTextProfile);
+        emailEditTxt = (TextView) view.findViewById(R.id.EmailEditTextProfile);
+        phoneNumberEditTxt = (TextView) view.findViewById(R.id.PhoneNumberEditTextProfile);
 
-        updateDetailsBtn = (Button) view.findViewById(R.id.UpdateProfileBtn);
+
+        //updateDetailsBtn = (Button) view.findViewById(R.id.UpdateProfileBtn);
         signOutBtn = (Button) view.findViewById(R.id.SignOutBtn);
 
-
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("users");
-        //Getting user detials from GoogleSignin
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getActivity());
-        if (acct != null) {
-            userId = acct.getId().toString();
+        userId = user.getUid();
 
-            databaseReference.child(userId).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-
-                    //Gettign the data form the firebase using model class
-                    Model model = snapshot.getValue(Model.class);
-                    //setting the data to android materials
-                    Picasso.get().load(model.getProfilepic()).into(circleImageView);
-                    firstNameTxt.setText(model.getFirstName());
-                    lastNameTxt.setText(model.getLastName());
-                    emailEditTxt.setText(model.getEmailAddress());
-                    phoneNumberEditTxt.setText(model.getPhoneNumber());
-                    passwordEdittxt.setText(model.getPassword());
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                }
-            });
-        }
-
-
-        //Implementing OnClick Listener to update data to firebase
-        updateDetailsBtn.setOnClickListener(new View.OnClickListener() {
+        databaseReference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Model userProfile = snapshot.getValue(Model.class);
 
-                //Getting the current data from the edit Text to update it to firebase
-                String phoneNumber = phoneNumberEditTxt.getText().toString();
-                String email = emailEditTxt.getText().toString();
-                String password = passwordEdittxt.getText().toString();
+                if (userProfile != null) {
+                    String firstname = userProfile.getFirstName();
+                    String lastname = userProfile.getLastName();
+                    String email = userProfile.getEmailAddress();
+                    String phonenumber = userProfile.getPhoneNumber();
 
-                //Checking for empty fields
-                if (phoneNumber.isEmpty() || email.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(getContext(), "Please, Fill Details", Toast.LENGTH_SHORT).show();
-                } else {
-                    //calling method to update data to firebase
-                    updateDetails(phoneNumber, email, password, userId);
+
+                    firstNameTxt.setText(firstname);
+                    lastNameTxt.setText(lastname);
+                    emailEditTxt.setText(email);
+                    phoneNumberEditTxt.setText(phonenumber);
                 }
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                //Toast.makeText(this,"Something went wrong.Try again!",Toast.LENGTH_LONG);
             }
         });
 
