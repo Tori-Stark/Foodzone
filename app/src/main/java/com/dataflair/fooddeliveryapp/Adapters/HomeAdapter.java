@@ -61,9 +61,9 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<Model, HomeAdapter.View
                 String key = FirebaseDatabase.getInstance().getReference().child("myOrders").push().getKey().toString();
 
                 //Getting the user id from google sign in
-                String userId = GoogleSignIn.getLastSignedInAccount(view.getContext()).getId();
+                //String userId = GoogleSignIn.getLastSignedInAccount(view.getContext()).getId();
                 //Database Path to add the details
-                FirebaseDatabase.getInstance().getReference().child("users").child(userId)
+                FirebaseDatabase.getInstance().getReference().child("users")
                         .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
@@ -82,11 +82,11 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<Model, HomeAdapter.View
                                 orderDetails.put("itemPrice", foodPrice);
                                 orderDetails.put("itemName", foodName);
                                 orderDetails.put("imageUrl", foodImage);
-                                orderDetails.put("userId", userId);
+                                //orderDetails.put("userId", userId);
 
 
                                 //Adding the hash map to the database
-                                FirebaseDatabase.getInstance().getReference().child("myOrders").child(userId).child(key)
+                                FirebaseDatabase.getInstance().getReference().child("myOrders").child(key)
                                         .setValue(orderDetails)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

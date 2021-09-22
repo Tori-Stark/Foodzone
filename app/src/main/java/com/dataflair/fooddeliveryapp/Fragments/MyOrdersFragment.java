@@ -66,12 +66,12 @@ public class MyOrdersFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         //Getting the user id from the google signin
-        String userId = GoogleSignIn.getLastSignedInAccount(getContext()).getId();
+        //String userId = GoogleSignIn.getLastSignedInAccount(getContext()).getId();
 
         //Firebase Recycler Options to get the data form firebase database using model class and reference
         FirebaseRecyclerOptions<Model> options =
                 new FirebaseRecyclerOptions.Builder<Model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("myOrders").child(userId), Model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("myOrders"), Model.class)
                         .build();
 
         adapter = new MyOrdersAdapter(options);
